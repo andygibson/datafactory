@@ -1,0 +1,43 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.fluttercode.datafactory</groupId>
+	<artifactId>datafactory</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>DataFactory</name>
+	<description>Library to generate data for testing</description>
+
+	<parent>
+		<groupId>org.sonatype.oss</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>3</version>
+	</parent>
+
+	<url>http://www.andygibson.net/blog/projects/</url>
+
+	<developers>
+		<developer>
+			<name>Andy Gibson</name>
+			<roles>
+				<role>Developer</role>
+			</roles>
+			<email>contact@andygibson.net</email>
+			<url>www.andygibson.net</url>
+		</developer>
+	</developers>
+
+	<licenses>
+		<license>
+			<name>LGPL Version 3</name>
+			<url>http://www.gnu.org/licenses/lgpl-3.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<scm>
+		<connection>git@github.com:andygibson/DataFactory.git</connection>
+		<developerConnection>scm:git@github.com:andygibson/DataFactory.git</developerConnection>
+		<url>git@github.com:andygibson/DataFactory.git</url>
+	</scm>
+
+</project>
