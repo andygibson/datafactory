@@ -4,6 +4,7 @@
 	<groupId>org.fluttercode.datafactory</groupId>
 	<artifactId>datafactory</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+
 	<name>DataFactory</name>
 	<description>Library to generate data for testing</description>
 
