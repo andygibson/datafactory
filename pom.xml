@@ -37,7 +37,6 @@
 
 	<scm>
 		<connection>scm:git:git@github.com/andygibson/${artifactId}.git</connection>
-
 		<developerConnection>scm:git:git@github.com/andygibson/${artifactId}.git</developerConnection>
 		<url>scm:git:git@github.com/andygibson/${artifactId}.git</url>
 	</scm>
@@ -51,7 +50,9 @@
 		<plugins>
 			<plugin>
 				<artifactId>maven-release-plugin</artifactId>
+				
 				<configuration>
+				<dryRun>true</dryRun>
 					<mavenExecutorId>forked-path</mavenExecutorId>
 				</configuration>
 			</plugin>
