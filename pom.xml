@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.fluttercode.datafactory</groupId>
 	<artifactId>datafactory</artifactId>
-	<version>0.7-SNAPSHOT</version> 
+	<version>0.7-SNAPSHOT</version>
 
 	<name>DataFactory</name>
 	<description>Library to generate data for testing</description>
- 
+
 	<parent>
 		<groupId>org.sonatype.oss</groupId>
 		<artifactId>oss-parent</artifactId>
@@ -35,12 +35,12 @@
 		</license>
 	</licenses>
 
-	<scm>
-		<connection>scm:git:git://github.com/andygibson/${project.artifactId}/</connection>
-		<developerConnection>scm:git:git@github.com:andygibson/${project.artifactId}.git</developerConnection>
-		<url>scm:git:git@github.com/andygibson/${artifactId}.git</url>
-	</scm>
 
+	<scm>
+		<connection>scm:git:git://github.com/andygibson/${project.artifactId}.git</connection>
+		<developerConnection>scm:git:git@github.com:andygibson/${project.artifactId}.git</developerConnection>
+		<url>http://github.com/andygibson/${project.artifactId}</url>
+	</scm>
 	<!-- <scm> <connection>scm:git:ssh://github.com:andygibson/${artifactId}.git</connection> 
 		<developerConnection>scm:git:ssh://git@github.com:andygibson/${artifactId}.git</developerConnection> 
 		<url>http://github.com/andygibson/datafactory</url> </scm> -->
@@ -51,9 +51,9 @@
 			<plugin>
 				<artifactId>maven-release-plugin</artifactId>
 				<version>2.0</version>
-				<configuration>				
+				<configuration>
 					<mavenExecutorId>forked-path</mavenExecutorId>
-					<gpg.useagent>true</gpg.useagent> 
+					<gpg.useagent>true</gpg.useagent>
 				</configuration>
 			</plugin>
 		</plugins>
