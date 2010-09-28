@@ -2,4 +2,4 @@
 target/*
 .project
 .settings
-.classpath
+.classpath/target
