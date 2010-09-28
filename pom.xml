@@ -38,17 +38,8 @@
 <scm>
    <connection>scm:git:git://github.com/andygibson/${project.artifactId}.git</connection>
    <url>scm:git:git://github.com/andygibson/${project.artifactId}.git</url>
-   <developerConnection>scm:git:git://github.com/andygibson/${project.artifactId}.git</developerConnection>
+   <developerConnection>scm:git:git@github.com:andygibson/${project.artifactId}.git</developerConnection>
  </scm>
-	<!--scm>
-		<connection>scm:git:git://github.com/andygibson/${project.artifactId}.git</connection>
-		<developerConnection>scm:git:git@github.com:andygibson/${project.artifactId}.git</developerConnection>
-		<url>http://github.com/andygibson/${project.artifactId}</url>
-	</scm-->
-	<!-- <scm> <connection>scm:git:ssh://github.com:andygibson/${artifactId}.git</connection> 
-		<developerConnection>scm:git:ssh://git@github.com:andygibson/${artifactId}.git</developerConnection> 
-		<url>http://github.com/andygibson/datafactory</url> </scm> -->
-
 
 	<build>
 		<plugins>
