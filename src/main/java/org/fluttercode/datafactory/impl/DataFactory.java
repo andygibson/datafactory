@@ -44,7 +44,7 @@ import org.fluttercode.datafactory.NameDataValues;
  */
 public final class DataFactory {
 
-	private static Random random = new Random();
+	private static Random random = new Random(93285);
 
 	private NameDataValues nameDataValues = new DefaultNameDataValues();
 	private AddressDataValues addressDataValues = new DefaultAddressDataValues();
@@ -531,5 +531,17 @@ public final class DataFactory {
 
 	public void setNameDataValues(NameDataValues nameDataValues) {
 		this.nameDataValues = nameDataValues;
+	}
+
+	/**
+	 * Call randomize with a seed value to reset the random number generator. By
+	 * using the same seed over different tests, you will should get the same
+	 * results out for the same data generation calls.
+	 * 
+	 * @param seed
+	 *            Seed value to use to generate random numbers
+	 */
+	public void randomize(int seed) {
+		random = new Random(seed);
 	}
 }
