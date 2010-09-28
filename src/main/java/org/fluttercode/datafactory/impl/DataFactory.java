@@ -34,17 +34,12 @@ import org.fluttercode.datafactory.ContentDataValues;
 import org.fluttercode.datafactory.NameDataValues;
 
 /**
- * Class that provides a number of methods for generating test data.
+ * Class that provides a number of methods for generating test data through
+ * helper components. These components implement interfaces that provide an
+ * interface to accessing the test data. Components can be replaced with other
+ * components to allow more suitable data to be used.
  * 
  * @author Andy Gibson
- * 
- */
-/**
- * @author GIBSOA01
- * 
- */
-/**
- * @author GIBSOA01
  * 
  */
 public final class DataFactory {
@@ -255,7 +250,7 @@ public final class DataFactory {
 	 * Generates line 2 for a street address (usually an Apt. or Suite #).
 	 * Returns default value if the probabilty test fails.
 	 * 
-	 *@return Street address line 2
+	 * @return Street address line 2
 	 */
 	public String getAddressLine2() {
 		int test = random.nextInt(100);
@@ -518,7 +513,7 @@ public final class DataFactory {
 	 * 
 	 * <pre>
 	 * if (DataFactory.chance(70)) {
-	 * 	//70% chance of this code being executed
+	 * 	// 70% chance of this code being executed
 	 * }
 	 * </pre>
 	 * 
