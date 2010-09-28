@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.fluttercode.datafactory</groupId>
 	<artifactId>datafactory</artifactId>
-	<version>0.7-SNAPSHOT</version>
+	<version>0.7</version>
 
 	<name>DataFactory</name>
 	<description>Library to generate data for testing</description>
@@ -60,6 +60,16 @@
 					<gpg.useagent>true</gpg.useagent>
 				</configuration>
 			</plugin>
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-compiler-plugin</artifactId>
+    <version>2.0.2</version>
+    <configuration>
+        <source>1.6</source>
+        <target>1.6</target>
+    </configuration>
+</plugin>
+
 		</plugins>
 	</build>
 
