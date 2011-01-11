@@ -174,6 +174,11 @@ public final class DataFactory {
 		return getItem(nameDataValues.getFirstNames());
 	}
 
+	/**
+	 * Returns a combination of first and last name values in one string
+	 * 
+	 * @return
+	 */
 	public String getName() {
 		return getItem(nameDataValues.getFirstNames()) + " "
 				+ getItem(nameDataValues.getLastNames());
@@ -310,7 +315,7 @@ public final class DataFactory {
 	 * @param year
 	 *            The year of the final {@link Date} result
 	 * @param month
-	 *            The month of the final {@link Date} result
+	 *            The month of the final {@link Date} result (from 1-12)
 	 * @param day
 	 *            The day of the final {@link Date} result
 	 * @return Date representing the passed in values.
@@ -325,7 +330,8 @@ public final class DataFactory {
 	/**
 	 * Returns a random date which is in the range <code>baseData</code> +
 	 * <code>minDaysFromData</code> to <code>baseData</code> +
-	 * <code>maxDaysFromData</code>.
+	 * <code>maxDaysFromData</code>. This method does not alter the time
+	 * component and the time is set to the time value of the base date.
 	 * 
 	 * @param baseDate
 	 *            Date to start from
@@ -345,7 +351,8 @@ public final class DataFactory {
 	}
 
 	/**
-	 * Returns a random date between two dates
+	 * Returns a random date between two dates. This method will alter the time
+	 * component of the dates
 	 * 
 	 * @param minDate
 	 *            Minimum date that can be returned
@@ -354,8 +361,9 @@ public final class DataFactory {
 	 * @return random date between these two dates.
 	 */
 	public Date getDateBetween(Date minDate, Date maxDate) {
-		int seconds = (int) ((maxDate.getTime() - minDate.getTime()) / 1000);
-		seconds = random.nextInt(seconds);
+		// this can break if seconds is an int
+		long seconds = (maxDate.getTime() - minDate.getTime()) / 1000;
+		seconds = (long) (random.nextDouble() * seconds);
 		Date result = new Date();
 		result.setTime(minDate.getTime() + (seconds * 1000));
 		return result;
@@ -529,10 +537,6 @@ public final class DataFactory {
 		return nameDataValues;
 	}
 
-	public void setNameDataValues(NameDataValues nameDataValues) {
-		this.nameDataValues = nameDataValues;
-	}
-
 	/**
 	 * Call randomize with a seed value to reset the random number generator. By
 	 * using the same seed over different tests, you will should get the same
@@ -544,4 +548,41 @@ public final class DataFactory {
 	public void randomize(int seed) {
 		random = new Random(seed);
 	}
+
+	/**
+	 * Set this to provide your own list of name data values by passing it a
+	 * class that implements the {@link NameDataValues} interface which just
+	 * returns the String arrays to use for the test data.
+	 * 
+	 * @param nameDataValues
+	 *            Object holding the set of data values to use
+	 */
+	public void setNameDataValues(NameDataValues nameDataValues) {
+		this.nameDataValues = nameDataValues;
+	}
+
+	/**
+	 * Set this to provide your own list of address data values by passing it a
+	 * class that implements the {@link AddressDataValues} interface which just
+	 * returns the String arrays to use for the test data.
+	 * 
+	 * @param addressDataValues
+	 *            Object holding the set of data values to use
+	 */
+	public void setAddressDataValues(AddressDataValues addressDataValues) {
+		this.addressDataValues = addressDataValues;
+	}
+
+	/**
+	 * Set this to provide your own list of content data values by passing it a
+	 * class that implements the {@link ContentDataValues} interface which just
+	 * returns the String arrays to use for the test data.
+	 * 
+	 * @param contentDataValues
+	 *            Object holding the set of data values to use
+	 */
+	public void setContentDataValues(ContentDataValues contentDataValues) {
+		this.contentDataValues = contentDataValues;
+	}
+
 }

@@ -29,13 +29,13 @@ public class DefaultContentDataValues implements ContentDataValues {
 
 	private static String[] businessTypes = { "Furnishings", "Bakery",
 			"Accounting", "Textiles", "Manufacturing", "Industries",
-			"Pro services", "Landscaping", "Realty", "Travel",
+			"Pro Services", "Landscaping", "Realty", "Travel",
 			"Medical supplies", "Office supplies", "Insurance", "Software",
-			"Motors", "Cafe", "Services", "Gymnasium", "Motor services",
-			"Signs", "Development" };
+			"Motors", "Cafe", "Services", "Gymnasium", "Motor Services",
+			"Signs", "Development","Studios","Engineering","Development" };
 
 	private static String[] emailHosts = { "gma1l", "hotma1l", "yah00",
-			"somema1l", "everyma1l", "ma1lbox", "eyec0de", "b1zmail", "ma1l2u" };
+			"somema1l", "everyma1l", "ma1lbox", "b1zmail", "ma1l2u" };
 
 	private static String[] tlds = { "org", "net", "com", "biz", "us", "co.uk" };
 
