@@ -1,8 +1,9 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.fluttercode.datafactory</groupId>
 	<artifactId>datafactory</artifactId>
-	<version>0.7.2</version>
+	<version>0.7.2-SNAPSHOT</version>
 
 	<name>DataFactory</name>
 	<description>Library to generate data for testing</description>
@@ -35,15 +36,16 @@
 	</licenses>
 
 
-<scm>
-   <connection>scm:git:git://github.com/andygibson/${project.artifactId}.git</connection>
-   <url>scm:git:git://github.com/andygibson/${project.artifactId}.git</url>
-   <developerConnection>scm:git:git@github.com:andygibson/${project.artifactId}.git</developerConnection>
- </scm>
+	<scm>
+		<connection>scm:git:git://github.com/andygibson/${project.artifactId}.git</connection>
+		<url>scm:git:git://github.com/andygibson/${project.artifactId}.git</url>
+		<developerConnection>scm:git:git@github.com:andygibson/${project.artifactId}.git</developerConnection>
+	</scm>
 
 	<build>
 		<plugins>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>
 				<version>2.0</version>
 				<configuration>
@@ -51,17 +53,39 @@
 					<gpg.useagent>true</gpg.useagent>
 				</configuration>
 			</plugin>
-<plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-compiler-plugin</artifactId>
-    <version>2.0.2</version>
-    <configuration>
-        <source>1.6</source>
-        <target>1.6</target>
-    </configuration>
-</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-install-plugin</artifactId>
+				<version>2.3.1</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.4.3</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<version>2.5</version>
+			</plugin>
+
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.0.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
 
 		</plugins>
+
 	</build>
 
 </project>
