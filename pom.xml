@@ -37,9 +37,9 @@
 
 
 	<scm>
-		<connection>scm:git:git://github.com/andygibson/${project.artifactId}.git</connection>
-		<url>scm:git:git://github.com/andygibson/${project.artifactId}.git</url>
-		<developerConnection>scm:git:git@github.com:andygibson/${project.artifactId}.git</developerConnection>
+		<connection>scm:git:git://github.com/andygibson/datafactory.git</connection>
+		<url>scm:git:git://github.com/andygibson/datafactory</url>
+		<developerConnection>scm:git:git@github.com:andygibson/datafactory.git</developerConnection>
 	</scm>
 
 	<build>
