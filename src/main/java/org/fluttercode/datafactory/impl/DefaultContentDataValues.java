@@ -25,14 +25,15 @@ public class DefaultContentDataValues implements ContentDataValues {
 			"interest", "or maybe", "write", "lots", "of", "code", "probably",
 			"should", "have", "generated", "this", "text", "automatically",
 			"so", "will", "from", "the", "web", "ending", "badly", "library",
-			"handled", "books", "constantly", "headphones" };
+			"handled", "books", "constantly", "headphones", "of", "ill", "on",
+			"it's", "sill","sits","sofa" };
 
 	private static String[] businessTypes = { "Furnishings", "Bakery",
 			"Accounting", "Textiles", "Manufacturing", "Industries",
 			"Pro Services", "Landscaping", "Realty", "Travel",
 			"Medical supplies", "Office supplies", "Insurance", "Software",
 			"Motors", "Cafe", "Services", "Gymnasium", "Motor Services",
-			"Signs", "Development","Studios","Engineering","Development" };
+			"Signs", "Development", "Studios", "Engineering", "Development" };
 
 	private static String[] emailHosts = { "gma1l", "hotma1l", "yah00",
 			"somema1l", "everyma1l", "ma1lbox", "b1zmail", "ma1l2u" };

@@ -306,6 +306,13 @@ public final class DataFactory {
 	 * @return Random number within range
 	 */
 	public int getNumberBetween(int min, int max) {
+
+		if (max < min) {
+			throw new IllegalArgumentException(String.format(
+					"Minimum must be less than minimum (min=%d, max=%d)", min,
+					max));
+		}
+
 		return min + random.nextInt(max - min);
 	}
 
@@ -370,36 +377,50 @@ public final class DataFactory {
 	}
 
 	/**
-	 * Returns a random string of characters of limited length.
+	 * Returns random text made up of english words
 	 * 
-	 * @param maxLength
-	 *            the maximum number of characters in the result
-	 * @return a string of random characters
-	 */
-	public String getRandomText(int maxLength) {
-		return getRandomText(maxLength, maxLength >> 1);
-	}
-
-	/**
-	 * Returns random text
-	 * 
-	 * @param maxLength
 	 * @param minLength
+	 * @param maxLength
 	 * @return
 	 */
-	public String getRandomText(int maxLength, int minLength) {
-		String res = "";
-		while (res.length() < minLength) {
-			res = res + generateWord() + " ";
+	public String getRandomText(int minLength, int maxLength) {
+		validateMinMaxParams(minLength, maxLength);
+
+		StringBuilder sb = new StringBuilder(maxLength);
+		int randomLength = minLength;
+		if (maxLength != minLength) {
+			randomLength = minLength + random.nextInt(maxLength - minLength);
 		}
-		String result = res;
-		int count = (maxLength - minLength) >> 3;
-		while (res.length() < maxLength && count > 0) {
-			result = res;
-			res = res + generateWord() + " ";
-			count--;
+		while (randomLength > 0) {
+			if (sb.length() != 0) {
+				sb.append(" ");
+				randomLength--;
+			}
+			String word = getRandomWord(randomLength,randomLength < 5);
+			sb.append(word);
+			randomLength = randomLength - word.length();
 		}
-		return result.trim();
+		return sb.toString();
+
+	}
+
+	private void validateMinMaxParams(int minLength, int maxLength) {
+		if (minLength < 0) {
+			throw new IllegalArgumentException(
+					"Minimum length must be a non-negative number");
+		}
+
+		if (maxLength < 0) {
+			throw new IllegalArgumentException(
+					"Maximum length must be a non-negative number");
+		}
+
+		if (maxLength < minLength) {
+			throw new IllegalArgumentException(
+					String.format(
+							"Minimum length must be less than maximum length (min=%d, max=%d)",
+							minLength, maxLength));
+		}
 	}
 
 	/**
@@ -409,39 +430,70 @@ public final class DataFactory {
 		return (char) (random.nextInt(26) + 'a');
 	}
 
+	public String getRandomChars(int minLength, int maxLength) {
+		validateMinMaxParams(minLength, maxLength);
+		StringBuilder sb = new StringBuilder(maxLength);
+
+		int length = minLength;
+		if (maxLength != minLength) {
+			length = length + random.nextInt(maxLength - minLength);
+		}
+		while (length > 0) {
+			sb.append(getRandomChar());
+			length--;
+		}
+		return sb.toString();
+	}
+
 	/**
 	 * Returns a word of a length between 1 and 10 characters.
 	 * 
 	 * @return A work of max length 10
 	 */
-	public String generateWord() {
+	public String getRandomWord() {
 		return getItem(contentDataValues.getWords());
 	}
 
 	/**
-	 * Generate a random word of length between min and max length. If max-min
-	 * len < 0 then a string of length 10 is returned.
+	 * Returns a valid word based on the length passed in. If the exact flag is
+	 * set, then a word of the exact length is returned. Otherwise, length is
+	 * used to indicate the maximum length of the word to return. If no word can
+	 * be found, then a set of random characters of length <code>length</code>
+	 * is returned.
 	 * 
-	 * @param minLen
-	 *            minimum length of word
-	 * @param maxLen
-	 *            maximum length of word
-	 * @return random word
+	 * @param length
+	 *            length of word we are looking for
+	 * @param exact
+	 *            specifies if an exact length is required
+	 * @return a word of a length up to length
 	 */
-	public String generateWord(int minLen, int maxLen) {
-		int len = maxLen - minLen;
-		if (len < 0) {
-			len = 10;
-			minLen = 1;
+	public String getRandomWord(int length, boolean exact) {
+		if (length <= 0) {
+			return "";
+		}
+		if (length == 1) {
+			if (chance(50)) {
+				return "a";
+			}
+			return "I";
 		}
 
-		len = minLen + random.nextInt(len);
+		String value = null;
 
-		StringBuilder sb = new StringBuilder(len);
-		for (int i = 0; i < len; i++) {
-			sb.append(getRandomChar());
+		// start from random pos and find the first word of the right size
+		String[] words = contentDataValues.getWords();
+		int pos = random.nextInt(words.length);
+		for (int i = 0; i < words.length; i++) {
+			int idx = (i + pos) % words.length;
+			String test = words[idx];
+			if ((test.length() < length && !exact)
+					|| (exact && test.length() == length)) {
+				return test;
+			}
 		}
-		return sb.toString();
+		// we haven't a word for this length which is between 2 and the shorted
+		// word in the dictionary
+		return getRandomChars(length, length);
 	}
 
 	/**
