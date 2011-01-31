@@ -42,6 +42,10 @@ import org.fluttercode.datafactory.NameDataValues;
  * @author Andy Gibson
  * 
  */
+/**
+ * @author GIBSOA01
+ * 
+ */
 public final class DataFactory {
 
 	private static Random random = new Random(93285);
@@ -377,28 +381,43 @@ public final class DataFactory {
 	}
 
 	/**
+	 * Returns random text made up of english words of length
+	 * <code>length</code>
+	 * 
+	 * @param length
+	 *            length of returned string
+	 * 
+	 * @return string made up of actual words with length <code>length</code>
+	 */
+	public String getRandomText(int length) {
+		return getRandomText(length, length);
+	}
+
+	/**
 	 * Returns random text made up of english words
 	 * 
 	 * @param minLength
+	 *            minimum length of returned string
 	 * @param maxLength
-	 * @return
+	 *            maximum length of returned string
+	 * @return string of length between min and max length
 	 */
 	public String getRandomText(int minLength, int maxLength) {
 		validateMinMaxParams(minLength, maxLength);
 
 		StringBuilder sb = new StringBuilder(maxLength);
-		int randomLength = minLength;
+		int length = minLength;
 		if (maxLength != minLength) {
-			randomLength = minLength + random.nextInt(maxLength - minLength);
+			length = length + random.nextInt(maxLength - minLength);
 		}
-		while (randomLength > 0) {
+		while (length > 0) {
 			if (sb.length() != 0) {
 				sb.append(" ");
-				randomLength--;
+				length--;
 			}
-			String word = getRandomWord(randomLength,randomLength < 5);
+			String word = getRandomWord(length);
 			sb.append(word);
-			randomLength = randomLength - word.length();
+			length = length - word.length();
 		}
 		return sb.toString();
 
@@ -430,6 +449,24 @@ public final class DataFactory {
 		return (char) (random.nextInt(26) + 'a');
 	}
 
+	/**
+	 * Return a string containing <code>length</code> random characters
+	 * 
+	 * @param length
+	 *            number of characters to use in the string
+	 * @return A string containing <code>length</code> random characters
+	 */
+	public String getRandomChars(int length) {
+		return getRandomChars(length, length);
+	}
+
+	/**
+	 * Return a string containing between <code>length</code> random characters
+	 * 
+	 * @param length
+	 *            number of characters to use in the string
+	 * @return A string containing <code>length</code> random characters
+	 */
 	public String getRandomChars(int minLength, int maxLength) {
 		validateMinMaxParams(minLength, maxLength);
 		StringBuilder sb = new StringBuilder(maxLength);
@@ -455,23 +492,49 @@ public final class DataFactory {
 	}
 
 	/**
-	 * Returns a valid word based on the length passed in. If the exact flag is
-	 * set, then a word of the exact length is returned. Otherwise, length is
-	 * used to indicate the maximum length of the word to return. If no word can
-	 * be found, then a set of random characters of length <code>length</code>
-	 * is returned.
+	 * Returns a valid word with a length of <code>length</code>
+	 * characters.
 	 * 
 	 * @param length
-	 *            length of word we are looking for
-	 * @param exact
-	 *            specifies if an exact length is required
-	 * @return a word of a length up to length
+	 *            maximum length of the word
+	 * @return a word of a length up to <code>length</code> characters
 	 */
-	public String getRandomWord(int length, boolean exact) {
-		if (length <= 0) {
-			return "";
+	public String getRandomWord(int length) {
+		return getRandomWord(length, length);
+	}
+
+	/**
+	 * Returns a valid word with a length of up to <code>length</code>
+	 * characters. If the <code>exactLength</code> parameter is set, then the
+	 * word will be exactly <code>length</code> characters in length.
+	 * 
+	 * @param length
+	 *            maximum length of the returned string
+	 * @param exactLength
+	 *            indicates if the word should have a length of
+	 *            <code>length</code>
+	 * @return a string with a length that matches the specified parameters.
+	 */
+	public String getRandomWord(int length, boolean exactLength) {
+		if (exactLength) {
+			return getRandomWord(length, length);
 		}
-		if (length == 1) {
+		return getRandomWord(0, length);
+	}
+
+	/**
+	 * Returns a valid word based on the length range passed in. The length will
+	 * always be between the min and max length range inclusive.
+	 * 
+	 * @param minLength minimum length of the word
+	 * @param maxLength maximum length of the word
+	 * @return a word of a length between min and max length
+	 */
+	public String getRandomWord(int minLength, int maxLength) {
+		validateMinMaxParams(minLength, maxLength);
+
+		// special case if we need a single char
+		if (maxLength == 1) {
 			if (chance(50)) {
 				return "a";
 			}
@@ -486,14 +549,12 @@ public final class DataFactory {
 		for (int i = 0; i < words.length; i++) {
 			int idx = (i + pos) % words.length;
 			String test = words[idx];
-			if ((test.length() < length && !exact)
-					|| (exact && test.length() == length)) {
+			if (test.length() >= minLength && test.length() <= maxLength) {
 				return test;
 			}
 		}
-		// we haven't a word for this length which is between 2 and the shorted
-		// word in the dictionary
-		return getRandomChars(length, length);
+		// we haven't a word for this length so generate one
+		return getRandomChars(minLength, maxLength);
 	}
 
 	/**
