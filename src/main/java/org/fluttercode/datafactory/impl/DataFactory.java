@@ -1,7 +1,7 @@
 package org.fluttercode.datafactory.impl;
 
 /*
- * Copyright 2010, Andrew M Gibson
+ * Copyright 2011, Andrew M Gibson
  *
  * www.andygibson.net
  *
