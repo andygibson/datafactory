@@ -48,11 +48,29 @@ import org.fluttercode.datafactory.NameDataValues;
  */
 public final class DataFactory {
 
-  private static Random random = new Random(System.currentTimeMillis());
+  private Random random;
 
 	private NameDataValues nameDataValues = new DefaultNameDataValues();
 	private AddressDataValues addressDataValues = new DefaultAddressDataValues();
 	private ContentDataValues contentDataValues = new DefaultContentDataValues();
+
+
+  /**
+   * Constructor that takes a seed for the internal random generator
+   * @param randomSeed The seed to initialize the internal random generator with.
+   */
+  public DataFactory(long randomSeed) {
+    random = new Random(randomSeed);
+  }
+
+  /**
+   * Default constructor, initializes the random generator with the same value
+   * every time.  The reasoning behind this is to support generating the same
+   * sequence of 'random' data in different test runs.
+   */
+  public DataFactory() {
+    this(93285l);
+  }
 
 	/**
 	 * Returns a random item from a list of items.
