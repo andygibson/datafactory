@@ -56,6 +56,18 @@ public class DataFactoryTextTest {
 					text.length(), len, text), len == text.length());
 
 		}
+	}@Test
+	public void shouldReturnTextWithWords() {
+		for (int i = 0; i < ITERATION_COUNT; i++) {
+			int len = 512 + dataFactory.getNumberUpTo(128);
+			String text = dataFactory.getRandomText(len);
+			Assert.assertTrue(String.format(
+					"Length does not match (%d, expected %d) '%s' ",
+					text.length(), len, text), len == text.length());
+            String[] words =   text.split(" ");
+            Assert.assertTrue("long texts should contain spaces",words.length>32);
+
+		}
 	}
 
 	@Test
