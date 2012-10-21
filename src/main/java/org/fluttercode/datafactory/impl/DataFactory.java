@@ -415,8 +415,8 @@ public final class DataFactory {
 				sb.append(" ");
 				length--;
 			}
-            final double desiredWordLength = Math.abs(1.0+random.nextGaussian() * 6);
-            int usedWordLength = (int)(Math.min(length, desiredWordLength));
+			final double desiredWordLengthNormalDistributed = Math.abs(1.0+random.nextGaussian() * 6);
+			int usedWordLength = (int)(Math.min(length, desiredWordLengthNormalDistributed));
 			String word = getRandomWord(usedWordLength);
 			sb.append(word);
 			length = length - word.length();

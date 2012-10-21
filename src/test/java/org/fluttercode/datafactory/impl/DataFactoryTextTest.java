@@ -56,7 +56,9 @@ public class DataFactoryTextTest {
 					text.length(), len, text), len == text.length());
 
 		}
-	}@Test
+	}
+
+    @Test
 	public void shouldReturnTextWithWords() {
 		for (int i = 0; i < ITERATION_COUNT; i++) {
 			int len = 512 + dataFactory.getNumberUpTo(128);
