@@ -68,6 +68,7 @@ public class DataFactoryTextTest {
 					text.length(), len, text), len == text.length());
             String[] words =   text.split(" ");
             Assert.assertTrue("long texts should contain spaces",words.length>32);
+            Assert.assertFalse("text should not contain double spaces",text.contains("  "));
 
 		}
 	}
