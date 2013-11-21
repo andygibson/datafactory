@@ -48,7 +48,7 @@ import org.fluttercode.datafactory.NameDataValues;
  */
 public final class DataFactory {
 
-	private static Random random = new Random(93285);
+	private static Random random = new Random();
 
 	private NameDataValues nameDataValues = new DefaultNameDataValues();
 	private AddressDataValues addressDataValues = new DefaultAddressDataValues();
