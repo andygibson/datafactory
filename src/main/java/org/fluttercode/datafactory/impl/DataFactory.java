@@ -317,7 +317,7 @@ public final class DataFactory {
 					max));
 		}
 
-		return min + random.nextInt(max - min);
+		return min + random.nextInt(Math.abs(max - min));
 	}
 
 	/**

@@ -92,6 +92,11 @@ public class DataFactoryTextTest {
 
 	}
 
+	@Test
+	public void shouldReturnRandomNumber() {
+		dataFactory.getNumber();
+	}
+	
 	//Test param checking on randomWord()
 	
 	@Test(expected=IllegalArgumentException.class)
