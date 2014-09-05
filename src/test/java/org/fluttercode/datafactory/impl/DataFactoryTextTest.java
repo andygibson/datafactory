@@ -97,6 +97,24 @@ public class DataFactoryTextTest {
 		dataFactory.getNumber();
 	}
 	
+	@Test
+	public void shouldReturnNegativeNumber() {
+		int random = dataFactory.getNumberBetween(Integer.MIN_VALUE, -1);
+		Assert.assertTrue(random < 0);
+	}
+
+	@Test
+	public void shouldReturnMinValue() {
+		int random = dataFactory.getNumberBetween(Integer.MIN_VALUE, Integer.MIN_VALUE);
+		Assert.assertEquals(Integer.MIN_VALUE, random);
+	}
+
+	@Test
+	public void shouldReturnMaxValue() {
+		int random = dataFactory.getNumberBetween(Integer.MAX_VALUE, Integer.MAX_VALUE);
+		Assert.assertEquals(Integer.MAX_VALUE, random);
+	}
+
 	//Test param checking on randomWord()
 	
 	@Test(expected=IllegalArgumentException.class)
