@@ -644,7 +644,7 @@ public final class DataFactory {
     /**
      * Gives you a true/false based on a probability with a random number
      * generator. Can be used to optionally add elements.
-     * <p/>
+     * 
      * <pre>
      * if (DataFactory.chance(70)) {
      * 	// 70% chance of this code being executed
