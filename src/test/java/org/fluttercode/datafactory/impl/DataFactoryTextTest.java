@@ -69,12 +69,14 @@ public class DataFactoryTextTest {
             Assert.assertNotNull(text);
 
             String msg = String
-                    .format("Length (%d) is less than expected minimum (%d) for iteration %d - text = '%s'",
+                    .format("Length (%d) is less than expected minimum (%d) " +
+                                    "for iteration %d - text = '%s'",
                             text.length(), minLen, i, text);
             Assert.assertTrue(msg, minLen <= text.length());
 
             msg = String
-                    .format("Length (%d) is more than expected (%d) for iteration %d - text = %s",
+                    .format("Length (%d) is more than expected (%d) for " +
+                                    "iteration %d - text = %s",
                             text.length(), maxLen, i, text);
             Assert.assertTrue(msg, maxLen >= text.length());
 

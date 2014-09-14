@@ -365,6 +365,117 @@ public class DefaultAddressDataValues implements AddressDataValues {
             "Winokur", "Withers", "Woodbine", "Woodstock", "Worth", "Wray",
             "Wrightsville"};
 
+    private static String[] countries = {"Andorra", "United Arab Emirates",
+            "Afghanistan", "Antigua and Barbuda", "Anguilla", "Albania",
+            "Armenia", "Angola", "Antarctica", "Argentina", "American Samoa",
+            "Austria", "Australia", "Aruba", "Azerbaijan", "Bosnia Herzegovina",
+            "Barbados", "Bangladesh", "Belgium", "Burkina Faso", "Bulgaria",
+            "Bahrain", "Burundi", "Benin", "Bermuda", "Brunei Darussalam",
+            "Bolivia", "Caribbean Netherlands ", "Brazil", "Bahamas", "Bhutan",
+            "Bouvet Island", "Botswana", "Belarus", "Belize", "Canada", "Congo",
+            "Central African Republic", "Congo", "Switzerland", "Cook Islands",
+            "Chile", "Cameroon", "China", "Colombia", "Costa Rica", "Cuba",
+            "Cape Verde", "Christmas Island", "Cyprus", "Czech Republic",
+            "Germany", "Djibouti", "Denmark", "Dominica", "Dominican Republic",
+            "Algeria", "Ecuador", "Estonia", "Egypt", "Western Sahara",
+            "Eritrea", "Spain", "Ethiopia", "Finland", "Fiji",
+            "Falkland Islands", "Faroe Islands", "France", "Gabon",
+            "United Kingdom", "Grenada", "Georgia", "French Guiana", "Guernsey",
+            "Ghana", "Gibraltar", "Greenland", "Gambia", "Guinea", "Guadeloupe",
+            "Equatorial Guinea", "Greece", "Guatemala", "Guam", "Guinea-Bissau",
+            "Guyana", "Hong Kong", "Honduras", "Croatia", "Haiti", "Hungary",
+            "Indonesia", "Ireland", "Israel", "Isle of Man", "India", "Iraq",
+            "Iran", "Iceland", "Italy", "Jersey", "Jamaica", "Jordan", "Japan",
+            "Kenya", "Kyrgyzstan", "Cambodia", "Kiribati", "Comoros",
+            "North Korea", "South Korea", "Kuwait", "Cayman Islands",
+            "Kazakhstan", "Lao People", "Lebanon", "Saint Lucia",
+            "Liechtenstein", "Sri Lanka", "Liberia", "Lesotho", "Lithuania",
+            "Luxembourg", "Latvia", "Libya", "Morocco", "Monaco", "Moldova",
+            "Montenegro", "Madagascar", "Marshall Islands", "Macedonia", "Mali",
+            "Myanmar", "Mongolia", "Macau", "Northern Mariana Islands",
+            "Martinique", "Mauritania", "Montserrat", "Malta", "Mauritius",
+            "Maldives", "Malawi", "Mexico", "Malaysia", "Mozambique", "Namibia",
+            "New Caledonia", "Niger", "Norfolk Island", "Nigeria", "Nicaragua",
+            "The Netherlands", "Norway", "Nepal", "Nauru", "Niue",
+            "New Zealand", "Oman", "Panama", "Peru", "French Polynesia",
+            "Papua New Guinea", "Philippines", "Pakistan", "Poland", "Pitcairn",
+            "Puerto Rico", "Palestine", "Portugal", "Palau", "Paraguay",
+            "Qatar", "Romania", "Serbia", "Russian Federation", "Rwanda",
+            "Saudi Arabia", "Solomon Islands", "Seychelles", "Sudan", "Sweden",
+            "Singapore", "Saint Helena", "Slovenia", "Slovakia", "Sierra Leone",
+            "San Marino", "Senegal", "Somalia", "Suriname", "South Sudan",
+            "El Salvador", "Sint Maarten", "Syria", "Swaziland", "Chad", "Togo",
+            "Thailand", "Tajikistan", "Tokelau", "Timor-Leste", "Turkmenistan",
+            "Tunisia", "Tonga", "Turkey", "Trinidad and Tobago", "Tuvalu",
+            "Taiwan", "Tanzania", "Ukraine", "Uganda", "United States",
+            "Uruguay", "Uzbekistan", "Vatican", "Venezuela", "Vietnam",
+            "Vanuatu", "Samoa", "Yemen", "Mayotte", "South Africa", "Zambia",
+            "Zimbabwe"};
+
+    private static String[] countriesShort = {"AD", "AE", "AF", "AG", "AI",
+            "AL", "AM", "AO", "AQ", "AR", "AS", "AT", "AU", "AW", "AZ", "BA",
+            "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BM", "BN", "BO",
+            "BQ", "BR", "BS", "BT", "BV", "BW", "BY", "BZ", "CA", "CD", "CF",
+            "CG", "CH", "CK", "CL", "CM", "CN", "CO", "CR", "CU", "CV", "CX",
+            "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG",
+            "EH", "ER", "ES", "ET", "FI", "FJ", "FK", "FO", "FR", "GA", "GB",
+            "GD", "GE", "GF", "GG", "GH", "GI", "GL", "GM", "GN", "GP", "GQ",
+            "GR", "GT", "GU", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID",
+            "IE", "IL", "IM", "IN", "IQ", "IR", "IS", "IT", "JE", "JM", "JO",
+            "JP", "KE", "KG", "KH", "KI", "KM", "KP", "KR", "KW", "KY", "KZ",
+            "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY",
+            "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MM", "MN", "MO",
+            "MP", "MQ", "MR", "MS", "MT", "MU", "MV", "MW", "MX", "MY", "MZ",
+            "NA", "NC", "NE", "NF", "NG", "NI", "NL", "NO", "NP", "NR", "NU",
+            "NZ", "OM", "PA", "PE", "PF", "PG", "PH", "PK", "PL", "PN", "PR",
+            "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RU", "RW", "SA", "SB",
+            "SC", "SD", "SE", "SG", "SH", "SI", "SK", "SL", "SM", "SN", "SO",
+            "SR", "SS", "SV", "SX", "SY", "SZ", "TD", "TG", "TH", "TJ", "TK",
+            "TL", "TM", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG",
+            "US", "UY", "UZ", "VA", "VE", "VN", "VU", "WS", "YE", "YT", "ZA",
+            "ZM", "ZW"};
+
+    private static String[] nationalities = {"Afghan", "Albanian", "Algerian",
+            "American", "Andorran", "Angolan", "Antiguans", "Argentinean",
+            "Armenian", "Australian", "Austrian", "Azerbaijani", "Bahamian",
+            "Bahraini", "Bangladeshi", "Barbadian", "Barbudans", "Batswana",
+            "Belarusian", "Belgian", "Belizean", "Beninese", "Bhutanese",
+            "Bolivian", "Bosnian", "Brazilian", "British", "Bruneian",
+            "Bulgarian", "Burkinabe", "Burmese", "Burundian", "Cambodian",
+            "Cameroonian", "Canadian", "Cape Verdean", "Central African",
+            "Chadian", "Chilean", "Chinese", "Colombian", "Comoran",
+            "Congolese", "Costa Rican", "Croatian", "Cuban", "Cypriot", "Czech",
+            "Danish", "Djibouti", "Dominican", "Dutch", "East Timorese",
+            "Ecuadorean", "Egyptian", "Emirian", "Equatorial Guinean",
+            "Eritrean", "Estonian", "Ethiopian", "Fijian", "Filipino",
+            "Finnish", "French", "Gabonese", "Gambian", "Georgian", "German",
+            "Ghanaian", "Greek", "Grenadian", "Guatemalan", "Guinea-Bissauan",
+            "Guinean", "Guyanese", "Haitian", "Herzegovinian", "Honduran",
+            "Hungarian", "Icelander", "Indian", "Indonesian", "Iranian",
+            "Iraqi", "Irish", "Israeli", "Italian", "Ivorian", "Jamaican",
+            "Japanese", "Jordanian", "Kazakhstani", "Kenyan",
+            "Kittian and Nevisian", "Kuwaiti", "Kyrgyz", "Laotian", "Latvian",
+            "Lebanese", "Liberian", "Libyan", "Liechtensteiner", "Lithuanian",
+            "Luxembourger", "Macedonian", "Malagasy", "Malawian", "Malaysian",
+            "Maldivan", "Malian", "Maltese", "Marshallese", "Mauritanian",
+            "Mauritian", "Mexican", "Micronesian", "Moldovan", "Monacan",
+            "Mongolian", "Moroccan", "Mosotho", "Motswana", "Mozambican",
+            "Namibian", "Nauruan", "Nepalese", "Netherlander", "New Zealander",
+            "Ni-Vanuatu", "Nicaraguan", "Nigerian", "Nigerien", "North Korean",
+            "Northern Irish", "Norwegian", "Omani", "Pakistani", "Palauan",
+            "Panamanian", "Papua New Guinean", "Paraguayan", "Peruvian",
+            "Polish", "Portuguese", "Qatari", "Romanian", "Russian", "Rwandan",
+            "Saint Lucian", "Salvadoran", "Samoan", "San Marinese",
+            "Sao Tomean", "Saudi", "Scottish", "Senegalese", "Serbian",
+            "Seychellois", "Sierra Leonean", "Singaporean", "Slovakian",
+            "Slovenian", "Solomon Islander", "Somali", "South African",
+            "South Korean", "Spanish", "Sri Lankan", "Sudanese", "Surinamer",
+            "Swazi", "Swedish", "Swiss", "Syrian", "Taiwanese", "Tajik",
+            "Tanzanian", "Thai", "Togolese", "Tongan",
+            "Trinidadian or Tobagonian", "Tunisian", "Turkish", "Tuvaluan",
+            "Ugandan", "Ukrainian", "Uruguayan", "Uzbekistani", "Venezuelan",
+            "Vietnamese", "Welsh", "Yemenite", "Zambian", "Zimbabwean"};
+
     public String[] getCities() {
         return cities;
     }
@@ -375,6 +486,14 @@ public class DefaultAddressDataValues implements AddressDataValues {
 
     public String[] getAddressSuffixes() {
         return addressSuffixes;
+    }
+
+    public String[] getCountries() {
+        return countries;
+    }
+
+    public String[] getCountriesShort() {
+        return countriesShort;
     }
 
 }

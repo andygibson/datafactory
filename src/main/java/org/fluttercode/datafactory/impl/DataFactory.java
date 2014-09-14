@@ -14,7 +14,7 @@ package org.fluttercode.datafactory.impl;
  * 
  * DataValve is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR a PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  * 
  * 
@@ -38,20 +38,18 @@ import java.util.Random;
  * interface to accessing the test data. Components can be replaced with other
  * components to allow more suitable data to be used.
  *
- * @author Andy Gibson
- *
+ * @author Andy Gibson, Bart Van Bos
  */
 
-/**
- * @author GIBSOA01
- */
 public final class DataFactory {
 
     private static Random random = new Random(93285);
 
     private NameDataValues nameDataValues = new DefaultNameDataValues();
-    private AddressDataValues addressDataValues = new DefaultAddressDataValues();
-    private ContentDataValues contentDataValues = new DefaultContentDataValues();
+    private AddressDataValues addressDataValues = new
+            DefaultAddressDataValues();
+    private ContentDataValues contentDataValues = new
+            DefaultContentDataValues();
 
     /**
      * Returns a random item from a list of items.
@@ -71,7 +69,8 @@ public final class DataFactory {
      *
      * @param <T>         Item type in the list and to return
      * @param items       List of items to choose from
-     * @param probability chance (in %, 100 being guaranteed) of returning an item from
+     * @param probability chance (in %, 100 being guaranteed) of returning an
+     *                    item from
      *                    the list
      * @return Item from the list or null if the probability test fails.
      */
@@ -86,7 +85,8 @@ public final class DataFactory {
      *
      * @param <T>         Item type in the list and to return
      * @param items       List of items to choose from
-     * @param probability chance (in %, 100 being guaranteed) of returning an item from
+     * @param probability chance (in %, 100 being guaranteed) of returning an
+     *                    item from
      *                    the list
      * @param defaultItem value to return if the probability test fails
      * @return Item from the list or the default value
@@ -104,7 +104,7 @@ public final class DataFactory {
     }
 
     /**
-     * Returns a random item from an array of items
+     * Returns a random item from an array of items.
      *
      * @param <T>   Array item type and the type to return
      * @param items Array of items to choose from
@@ -121,7 +121,8 @@ public final class DataFactory {
      *
      * @param <T>         Array item type and the type to return
      * @param items       Array of items to choose from
-     * @param probability chance (in %, 100 being guaranteed) of returning an item from
+     * @param probability chance (in %, 100 being guaranteed) of returning an
+     *                    item from
      *                    the array
      * @return Item from the array or the default value
      */
@@ -136,7 +137,8 @@ public final class DataFactory {
      *
      * @param <T>         Array item type and the type to return
      * @param items       Array of items to choose from
-     * @param probability chance (in %, 100 being guaranteed) of returning an item from
+     * @param probability chance (in %, 100 being guaranteed) of returning an
+     *                    item from
      *                    the array
      * @param defaultItem value to return if the probability test fails
      * @return Item from the array or the default value
@@ -153,16 +155,18 @@ public final class DataFactory {
     }
 
     /**
-     * @return A random first name
+     * Get a random first name.
+     *
+     * @return a random first name
      */
     public String getFirstName() {
         return getItem(nameDataValues.getFirstNames());
     }
 
     /**
-     * Returns a combination of first and last name values in one string
+     * Returns a combination of first and last name values in one string.
      *
-     * @return
+     * @return a combination of first and last name values
      */
     public String getName() {
         return getItem(nameDataValues.getFirstNames()) + " "
@@ -170,30 +174,36 @@ public final class DataFactory {
     }
 
     /**
-     * @return A random last name
+     * Get a random last name.
+     *
+     * @return a random last name
      */
     public String getLastName() {
         return getItem(nameDataValues.getLastNames());
     }
 
     /**
-     * @return A random street name
+     * Get a random street name.
+     *
+     * @return a random street name
      */
     public String getStreetName() {
         return getItem(addressDataValues.getStreetNames());
     }
 
     /**
-     * @return A random street suffix
+     * Get a random street suffix.
+     *
+     * @return a random street suffix
      */
     public String getStreetSuffix() {
         return getItem(addressDataValues.getAddressSuffixes());
     }
 
     /**
-     * Generates a random city value
+     * Generates a random city value.
      *
-     * @return City as a string
+     * @return city as a string
      */
     public String getCity() {
         return getItem(addressDataValues.getCities());
@@ -201,9 +211,9 @@ public final class DataFactory {
 
     /**
      * Generates an address value consisting of house number, street name and
-     * street suffix. i.e. <code>543 Larkhill Road</code>
+     * street suffix. i.e. <code>543 Larkhill Road</code>.
      *
-     * @return Address as a string
+     * @return address as a string
      */
     public String getAddress() {
         int num = 404 + random.nextInt(1400);
@@ -214,8 +224,8 @@ public final class DataFactory {
      * Generates line 2 for a street address (usually an Apt. or Suite #).
      * Returns null if the probabilty test fails.
      *
-     * @param probability Chance as % of have a value returned instead of null.
-     * @return Street address line two or null if the probability test fails
+     * @param probability Chance as % of have a value returned instead of null
+     * @return street address line two or null if the probability test fails
      */
     public String getAddressLine2(int probability) {
         return getAddressLine2(probability, null);
@@ -223,11 +233,11 @@ public final class DataFactory {
 
     /**
      * Generates line 2 for a street address (usually an Apt. or Suite #).
-     * Returns default value if the probabilty test fails.
+     * Returns default value if the probability test fails.
      *
-     * @param probability  Chance as % of have a value returned instead of null.
-     * @param defaultValue Value to return if the probability test fails.
-     * @return Street address line two or null if the probability test fails
+     * @param probability  Chance as % of have a value returned instead of null
+     * @param defaultValue Value to return if the probability test fails
+     * @return street address line two or null if the probability test fails
      */
     public String getAddressLine2(int probability, String defaultValue) {
         return chance(probability) ? getAddressLine2() : defaultValue;
@@ -237,7 +247,7 @@ public final class DataFactory {
      * Generates line 2 for a street address (usually an Apt. or Suite #).
      * Returns default value if the probabilty test fails.
      *
-     * @return Street address line 2
+     * @return street address line 2
      */
     public String getAddressLine2() {
         int test = random.nextInt(100);
@@ -246,6 +256,24 @@ public final class DataFactory {
         } else {
             return "Suite #" + 100 + random.nextInt(1000);
         }
+    }
+
+    /**
+     * Generates a random country value
+     *
+     * @return country as a string
+     */
+    public String getCountry() {
+        return getItem(addressDataValues.getCountries());
+    }
+
+    /**
+     * Generates a random country abbreviation value
+     *
+     * @return country abbreviation as a string
+     */
+    public String getCountryShort() {
+        return getItem(addressDataValues.getCountriesShort());
     }
 
     /**
@@ -259,16 +287,25 @@ public final class DataFactory {
     }
 
     /**
+     * Get a random occupation.
+     *
+     * @return a random occupation
+     */
+    public String getOccupation() {
+        return getItem(contentDataValues.getOccupations());
+    }
+
+    /**
      * Returns a random int value.
      *
-     * @return random number
+     * @return random integer number
      */
     public int getNumber() {
         return getNumberBetween(Integer.MIN_VALUE, Integer.MAX_VALUE);
     }
 
     /**
-     * Returns a random number between 0 and max
+     * Returns a random number between 0 and max.
      *
      * @param max Maximum value of result
      * @return random number no more than max
@@ -278,11 +315,11 @@ public final class DataFactory {
     }
 
     /**
-     * Returns a number betwen min and max
+     * Returns a number between min and max.
      *
      * @param min minimum value of result
      * @param max maximum value of result
-     * @return Random number within range
+     * @return random number within range
      */
     public int getNumberBetween(int min, int max) {
 
@@ -296,7 +333,7 @@ public final class DataFactory {
     }
 
     /**
-     * Builds a date from the year, month, day values passed in
+     * Builds a date from the year, month, day values passed in.
      *
      * @param year  The year of the final {@link Date} result
      * @param month The month of the final {@link Date} result (from 1-12)
@@ -317,11 +354,14 @@ public final class DataFactory {
      * component and the time is set to the time value of the base date.
      *
      * @param baseDate        Date to start from
-     * @param minDaysFromDate minimum number of days from the baseDate the result can be
-     * @param maxDaysFromDate maximum number of days from the baseDate the result can be
-     * @return A random date
+     * @param minDaysFromDate minimum number of days from the baseDate the
+     *                        result can be
+     * @param maxDaysFromDate maximum number of days from the baseDate the
+     *                        result can be
+     * @return a random date
      */
-    public Date getDate(Date baseDate, int minDaysFromDate, int maxDaysFromDate) {
+    public Date getDate(Date baseDate, int minDaysFromDate,
+                        int maxDaysFromDate) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(baseDate);
         int diff = minDaysFromDate
@@ -332,7 +372,7 @@ public final class DataFactory {
 
     /**
      * Returns a random date between two dates. This method will alter the time
-     * component of the dates
+     * component of the dates.
      *
      * @param minDate Minimum date that can be returned
      * @param maxDate Maximum date that can be returned
@@ -348,18 +388,17 @@ public final class DataFactory {
     }
 
     /**
-     * Returns random text made up of english words of length
-     * <code>length</code>
+     * Returns random text made up of english words with given length.
      *
      * @param length length of returned string
-     * @return string made up of actual words with length <code>length</code>
+     * @return string made up of actual words with given length
      */
     public String getRandomText(int length) {
         return getRandomText(length, length);
     }
 
     /**
-     * Returns random text made up of english words
+     * Returns random text made up of english words.
      *
      * @param minLength minimum length of returned string
      * @param maxLength maximum length of returned string
@@ -400,12 +439,15 @@ public final class DataFactory {
         if (maxLength < minLength) {
             throw new IllegalArgumentException(
                     String.format(
-                            "Minimum length must be less than maximum length (min=%d, max=%d)",
+                            "Minimum length must be less than maximum length " +
+                                    "(min=%d, max=%d)",
                             minLength, maxLength));
         }
     }
 
     /**
+     * Get a random character.
+     *
      * @return a random character
      */
     public char getRandomChar() {
@@ -413,20 +455,21 @@ public final class DataFactory {
     }
 
     /**
-     * Return a string containing <code>length</code> random characters
+     * Return a string containing <code>length</code> random characters.
      *
      * @param length number of characters to use in the string
-     * @return A string containing <code>length</code> random characters
+     * @return a string containing <code>length</code> random characters
      */
     public String getRandomChars(int length) {
         return getRandomChars(length, length);
     }
 
     /**
-     * Return a string containing between <code>length</code> random characters
+     * Return a string containing between <code>length</code> random characters.
      *
-     * @param length number of characters to use in the string
-     * @return A string containing <code>length</code> random characters
+     * @param minLength minimum number of characters to use in the string
+     * @param maxLength maximum number of characters to use in the string
+     * @return a string containing <code>length</code> random characters
      */
     public String getRandomChars(int minLength, int maxLength) {
         validateMinMaxParams(minLength, maxLength);
@@ -446,7 +489,7 @@ public final class DataFactory {
     /**
      * Returns a word of a length between 1 and 10 characters.
      *
-     * @return A work of max length 10
+     * @return a work of max length 10
      */
     public String getRandomWord() {
         return getItem(contentDataValues.getWords());
@@ -471,7 +514,7 @@ public final class DataFactory {
      * @param length      maximum length of the returned string
      * @param exactLength indicates if the word should have a length of
      *                    <code>length</code>
-     * @return a string with a length that matches the specified parameters.
+     * @return a string with a length that matches the specified parameters
      */
     public String getRandomWord(int length, boolean exactLength) {
         if (exactLength) {
@@ -499,8 +542,6 @@ public final class DataFactory {
             return "I";
         }
 
-        String value = null;
-
         // start from random pos and find the first word of the right size
         String[] words = contentDataValues.getWords();
         int pos = random.nextInt(words.length);
@@ -516,8 +557,10 @@ public final class DataFactory {
     }
 
     /**
+     * Get a random name suffix.
+     *
      * @param chance Chance of a suffix being returned
-     * @return
+     * @return a name suffix
      */
     public String getSuffix(int chance) {
         return getItem(nameDataValues.getSuffixes(), chance);
@@ -535,31 +578,47 @@ public final class DataFactory {
 
     /**
      * Returns a string containing a set of numbers with a fixed number of
-     * digits
+     * digits.
      *
      * @param digits number of digits in the final number
-     * @return Random number as a string with a fixed length
+     * @return random number as a string with a fixed length
      */
     public String getNumberText(int digits) {
-        String result = "";
+        StringBuffer result = new StringBuffer();
         for (int i = 0; i < digits; i++) {
-            result = result + random.nextInt(10);
+            result.append(random.nextInt(10));
         }
-        return result;
+        return result.toString();
     }
 
     /**
-     * Generates a random business name by taking a city name and additing a
+     * Returns a string containing a set of hexadecimals characters with a
+     * fixed length.
+     *
+     * @param length number of hex chars in the final number
+     * @return random number as a string with a fixed length
+     */
+    public String getHexText(int length) {
+        StringBuffer sb = new StringBuffer();
+        while (sb.length() < length) {
+            sb.append(Integer.toHexString(random.nextInt()));
+        }
+
+        return sb.toString().substring(0, length);
+    }
+
+    /**
+     * Generates a random business name by taking a city name and adding a
      * business onto it.
      *
-     * @return A random business name
+     * @return a random business name
      */
     public String getBusinessName() {
         return getCity() + " " + getItem(contentDataValues.getBusinessTypes());
     }
 
     /**
-     * Generates an email address
+     * Generates a random email address.
      *
      * @return an email address
      */
@@ -593,7 +652,7 @@ public final class DataFactory {
      * </pre>
      *
      * @param chance % chance of returning true
-     * @return
+     * @return a true/false based on a probability
      */
     public boolean chance(int chance) {
         return random.nextInt(100) < chance;

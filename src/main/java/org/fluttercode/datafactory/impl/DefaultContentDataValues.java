@@ -63,6 +63,22 @@ public class DefaultContentDataValues implements ContentDataValues {
 
     private static String[] tlds = {"org", "net", "com", "biz", "us", "co.uk"};
 
+    private static String[] occupations = {"Accountant", "Auditor", "Actor",
+            "Actuary", "Anesthesiologist", "Archivist", "Astronomer",
+            "Audiologist", "Bailiff", "Baker", "Barber", "Bartender",
+            "Boilermaker", "Breeder", "Carpenter", "Cashier", "Chemist",
+            "Chiropractor", "Choreographer", "Clergy", "Concierge", "Curator",
+            "Dancer", "Dishwasher", "Economist", "Editor", "Electrician",
+            "Embalmer", "Epidemiologist", "Faller", "Firefighter", "Forester",
+            "Geographer", "Glazier", "Historian", "Hydrologist", "Lawyer",
+            "Legislator", "Librarian", "Logistician", "Machinist",
+            "Mathematician", "Microbiologist", "Model", "Optometrist",
+            "Orthodontist", "Paperhanger", "Pharmacist", "Photographer",
+            "Physicist", "Pipelayer", "Podiatrist", "Prosthodontist",
+            "Psychiatrist", "Rigger", "Roofer", "Shampooer", "Sociologist",
+            "Statistician", "Stonemason", "Surgeon", "Surveyor", "Taper",
+            "Telemarketer", "Teller", "Upholsterer", "Veterinarian"};
+
     public String[] getWords() {
         return words;
     }
@@ -79,4 +95,7 @@ public class DefaultContentDataValues implements ContentDataValues {
         return tlds;
     }
 
+    public String[] getOccupations() {
+        return occupations;
+    }
 }

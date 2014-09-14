@@ -1,5 +1,7 @@
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.fluttercode.datafactory</groupId>
     <artifactId>datafactory</artifactId>
@@ -42,7 +44,6 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
-
 
     <scm>
         <connection>scm:git:git://github.com/boeboe/datafactory.git</connection>
@@ -89,7 +90,6 @@
                 <version>2.8.2</version>
             </plugin>
 
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -99,9 +99,7 @@
                     <target>1.5</target>
                 </configuration>
             </plugin>
-
         </plugins>
-
     </build>
 
 </project>

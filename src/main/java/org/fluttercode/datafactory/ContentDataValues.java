@@ -32,4 +32,6 @@ public interface ContentDataValues {
     String[] getEmailHosts();
 
     String[] getTlds();
+
+    String[] getOccupations();
 }
