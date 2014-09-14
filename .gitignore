@@ -1,6 +1,17 @@
-# binar
-target/*
-.project
-.settings
-.classpath/target
+# Eclipse
 .classpath
+.project
+.classpath/target
+.settings/
+
+# Intellij
+.idea/
+*.iml
+*.iws
+
+# Mac
+.DS_Store
+
+# Maven
+log/
+target/
