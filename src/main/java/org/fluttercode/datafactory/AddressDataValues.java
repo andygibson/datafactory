@@ -26,33 +26,44 @@ package org.fluttercode.datafactory;
 public interface AddressDataValues {
 
     /**
-     * @return Array of street address
+     * Returns an array of street addresses.
+     *
+     * @return array of street addresses
      */
     String[] getStreetNames();
 
     /**
-     * @return Array of cities
+     * Returns an array of cities.
+     *
+     * @return array of cities
      */
     String[] getCities();
 
     /**
-     * Returns a list of address suffixes such as "Lane", "Drive", "Parkway"
+     * Returns an array of address suffixes such as "Lane", "Drive", "Parkway".
      *
-     * @return Array of address suffixes
+     * @return array of address suffixes
      */
     String[] getAddressSuffixes();
 
     /**
-     * Returns a list of countries
+     * Returns an array of countries.
      *
-     * @return Array of countries
+     * @return array of countries
      */
     String[] getCountries();
 
     /**
-     * Returns a list of country abbreviations
+     * Returns an array of country abbreviations.
      *
-     * @return Array of country abbreviations
+     * @return array of country abbreviations
      */
     String[] getCountriesShort();
+
+    /**
+     * Returns an array of nationalities.
+     *
+     * @return array of nationalities
+     */
+    String[] getNationalities();
 }

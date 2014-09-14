@@ -496,4 +496,7 @@ public class DefaultAddressDataValues implements AddressDataValues {
         return countriesShort;
     }
 
+    public String[] getNationalities() {
+        return nationalities;
+    }
 }

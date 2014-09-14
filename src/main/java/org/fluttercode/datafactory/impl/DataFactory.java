@@ -259,7 +259,7 @@ public final class DataFactory {
     }
 
     /**
-     * Generates a random country value
+     * Generates a random country value.
      *
      * @return country as a string
      */
@@ -268,7 +268,7 @@ public final class DataFactory {
     }
 
     /**
-     * Generates a random country abbreviation value
+     * Generates a random country abbreviation value.
      *
      * @return country abbreviation as a string
      */
@@ -277,7 +277,16 @@ public final class DataFactory {
     }
 
     /**
-     * Creates a random birthdate within the range of 1955 to 1985
+     * Generates a random nationality value.
+     *
+     * @return nationality as a string
+     */
+    public String getNationality() {
+        return getItem(addressDataValues.getNationalities());
+    }
+
+    /**
+     * Creates a random birthdate within the range of 1955 to 1985.
      *
      * @return Date representing a birthdate
      */
