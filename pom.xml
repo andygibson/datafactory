@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.fluttercode.datafactory</groupId>
     <artifactId>datafactory</artifactId>
-    <version>0.10-SNAPSHOT</version>
+    <version>0.9</version>
 
     <properties>
         <nexus.version>1.6.5</nexus.version>
@@ -124,4 +124,16 @@
         </plugins>
     </build>
 
+    <distributionManagement>
+        <repository>
+            <id>nexus-allbits</id>
+            <name>Internal Releases</name>
+            <url>http://nexus.allbits.org:8081/nexus/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>nexus-allbits</id>
+            <name>Internal Snapshots</name>
+            <url>http://nexus.allbits.org:8081/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>
