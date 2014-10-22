@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.fluttercode.datafactory</groupId>
     <artifactId>datafactory</artifactId>
-    <version>0.10-SNAPSHOT</version>
+    <version>0.9-SNAPSHOT</version>
 
     <properties>
         <nexus.version>1.6.5</nexus.version>
