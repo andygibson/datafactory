@@ -23,12 +23,14 @@ package org.fluttercode.datafactory;
  *
  */
 
-
 public interface NameDataValues {
 
-	String[] getFirstNames();
-	String[] getLastNames();
-	String[] getPrefixes();
-	String[] getSuffixes();
+    String[] getFirstNames();
+
+    String[] getLastNames();
+
+    String[] getPrefixes();
+
+    String[] getSuffixes();
 
 }
