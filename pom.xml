@@ -9,16 +9,8 @@
         <nexus.version>1.6.5</nexus.version>
     </properties>
 
-
     <name>DataFactory</name>
     <description>Library to generate data for testing</description>
-
-    <parent>
-        <groupId>org.sonatype.oss</groupId>
-        <artifactId>oss-parent</artifactId>
-        <version>9</version>
-    </parent>
-
     <url>http://lnkd.in/Kre-kR</url>
 
     <developers>
@@ -35,7 +27,7 @@
             <roles>
                 <role>Developer</role>
             </roles>
-            <email>bartvanbos@gmail.com</email>
+            <email>bartvanbos@allbits.org</email>
             <url>http://lnkd.in/Kre-kR</url>
         </developer>
     </developers>
