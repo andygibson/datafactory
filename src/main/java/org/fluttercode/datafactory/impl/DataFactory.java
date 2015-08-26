@@ -26,7 +26,6 @@ package org.fluttercode.datafactory.impl;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Properties;
 import java.util.Random;
 
 import org.fluttercode.datafactory.AddressDataValues;
@@ -58,7 +57,27 @@ public final class DataFactory {
 	private Random random = new Random();
 
 	/**
-	 * Deprecated, use one of the static constructor methods
+	 * Deprecated as of Aug 2015, use one of the static constructor methods:
+	 * <p/>
+	 * 
+	 * <pre>
+	 * dataFactory = DataFactory create();
+	 * or
+	 * dataFactory = DataFactory create(5765297);
+	 * or
+	 * dataFactory = DataFactory create(someRandom);
+	 * </pre>
+	 * 
+	 * 
+	 * If you want to use the same static fixed seed Random object that was
+	 * implemented originally, you can just create the factories using :
+	 * 
+	 * <pre>
+	 * DataFactory createWithOriginalRandom();
+	 * </pre>
+	 * 
+	 * Using this constructor will also create a datafactory that uses the same
+	 * static fixed seed Random
 	 */
 	@Deprecated
 	public DataFactory() {
@@ -72,11 +91,10 @@ public final class DataFactory {
 	public static DataFactory create() {
 		return new DataFactory();
 	}
-	
+
 	public static DataFactory create(long seed) {
 		return new DataFactory(new Random(seed));
 	}
-	
 
 	/**
 	 * Backwards compatible constructor that creates a datafactory driven by the
@@ -571,8 +589,7 @@ public final class DataFactory {
 			}
 			return "I";
 		}
-
-		String value = null;
+		
 
 		// start from random pos and find the first word of the right size
 		String[] words = contentDataValues.getWords();
