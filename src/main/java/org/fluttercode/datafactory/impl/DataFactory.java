@@ -48,11 +48,45 @@ import org.fluttercode.datafactory.NameDataValues;
  */
 public final class DataFactory {
 
-	private static Random random = new Random(93285);
+	// used for backwards compatibility
+	private static Random original_random = new Random(93285);
 
 	private NameDataValues nameDataValues = new DefaultNameDataValues();
 	private AddressDataValues addressDataValues = new DefaultAddressDataValues();
 	private ContentDataValues contentDataValues = new DefaultContentDataValues();
+
+	private Random random = new Random();
+
+	/**
+	 * Deprecated, use one of the static constructor methods
+	 */
+	@Deprecated
+	public DataFactory() {
+		this(original_random);
+	}
+
+	private DataFactory(Random random) {
+		this.random = random;
+	}
+
+	public static DataFactory create() {
+		return new DataFactory();
+	}
+	
+	public static DataFactory create(long seed) {
+		return new DataFactory(new Random(seed));
+	}
+	
+
+	/**
+	 * Backwards compatible constructor that creates a datafactory driven by the
+	 * original instance of random.
+	 * 
+	 * @return DataFactory instance with a shared random
+	 */
+	public static DataFactory createWithOriginalRandom() {
+		return new DataFactory(original_random);
+	}
 
 	/**
 	 * Returns a random item from a list of items.
@@ -109,8 +143,7 @@ public final class DataFactory {
 			throw new IllegalArgumentException("Item list cannot be empty");
 		}
 
-		return chance(probability) ? items.get(random.nextInt(items.size()))
-				: defaultItem;
+		return chance(probability) ? items.get(random.nextInt(items.size())) : defaultItem;
 	}
 
 	/**
@@ -167,8 +200,7 @@ public final class DataFactory {
 		if (items.length == 0) {
 			throw new IllegalArgumentException("Item array cannot be empty");
 		}
-		return chance(probability) ? items[random.nextInt(items.length)]
-				: defaultItem;
+		return chance(probability) ? items[random.nextInt(items.length)] : defaultItem;
 	}
 
 	/**
@@ -184,8 +216,7 @@ public final class DataFactory {
 	 * @return
 	 */
 	public String getName() {
-		return getItem(nameDataValues.getFirstNames()) + " "
-				+ getItem(nameDataValues.getLastNames());
+		return getItem(nameDataValues.getFirstNames()) + " " + getItem(nameDataValues.getLastNames());
 	}
 
 	/**
@@ -312,15 +343,14 @@ public final class DataFactory {
 	public int getNumberBetween(int min, int max) {
 
 		if (max < min) {
-			throw new IllegalArgumentException(String.format(
-					"Minimum must be less than minimum (min=%d, max=%d)", min,
-					max));
+			throw new IllegalArgumentException(
+					String.format("Minimum must be less than minimum (min=%d, max=%d)", min, max));
 		}
-		if (max == min) {			
+		if (max == min) {
 			return min;
 		}
-		
-		return min + random.nextInt(max-min);
+
+		return min + random.nextInt(max - min);
 	}
 
 	/**
@@ -358,8 +388,7 @@ public final class DataFactory {
 	public Date getDate(Date baseDate, int minDaysFromDate, int maxDaysFromDate) {
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(baseDate);
-		int diff = minDaysFromDate
-				+ (random.nextInt(maxDaysFromDate - minDaysFromDate));
+		int diff = minDaysFromDate + (random.nextInt(maxDaysFromDate - minDaysFromDate));
 		cal.add(Calendar.DATE, diff);
 		return cal.getTime();
 	}
@@ -418,8 +447,8 @@ public final class DataFactory {
 				sb.append(" ");
 				length--;
 			}
-			final double desiredWordLengthNormalDistributed = 1.0+Math.abs(random.nextGaussian()) * 6;
-			int usedWordLength = (int)(Math.min(length, desiredWordLengthNormalDistributed));
+			final double desiredWordLengthNormalDistributed = 1.0 + Math.abs(random.nextGaussian()) * 6;
+			int usedWordLength = (int) (Math.min(length, desiredWordLengthNormalDistributed));
 			String word = getRandomWord(usedWordLength);
 			sb.append(word);
 			length = length - word.length();
@@ -430,20 +459,16 @@ public final class DataFactory {
 
 	private void validateMinMaxParams(int minLength, int maxLength) {
 		if (minLength < 0) {
-			throw new IllegalArgumentException(
-					"Minimum length must be a non-negative number");
+			throw new IllegalArgumentException("Minimum length must be a non-negative number");
 		}
 
 		if (maxLength < 0) {
-			throw new IllegalArgumentException(
-					"Maximum length must be a non-negative number");
+			throw new IllegalArgumentException("Maximum length must be a non-negative number");
 		}
 
 		if (maxLength < minLength) {
-			throw new IllegalArgumentException(
-					String.format(
-							"Minimum length must be less than maximum length (min=%d, max=%d)",
-							minLength, maxLength));
+			throw new IllegalArgumentException(String
+					.format("Minimum length must be less than maximum length (min=%d, max=%d)", minLength, maxLength));
 		}
 	}
 
@@ -497,8 +522,7 @@ public final class DataFactory {
 	}
 
 	/**
-	 * Returns a valid word with a length of <code>length</code>
-	 * characters.
+	 * Returns a valid word with a length of <code>length</code> characters.
 	 * 
 	 * @param length
 	 *            maximum length of the word
@@ -531,8 +555,10 @@ public final class DataFactory {
 	 * Returns a valid word based on the length range passed in. The length will
 	 * always be between the min and max length range inclusive.
 	 * 
-	 * @param minLength minimum length of the word
-	 * @param maxLength maximum length of the word
+	 * @param minLength
+	 *            minimum length of the word
+	 * @param maxLength
+	 *            maximum length of the word
 	 * @return a word of a length between min and max length
 	 */
 	public String getRandomWord(int minLength, int maxLength) {
@@ -622,14 +648,12 @@ public final class DataFactory {
 			email = getFirstName().charAt(0) + getLastName();
 		} else {
 			// 2 words
-			email = getItem(contentDataValues.getWords())
-					+ getItem(contentDataValues.getWords());
+			email = getItem(contentDataValues.getWords()) + getItem(contentDataValues.getWords());
 		}
 		if (random.nextInt(100) > 80) {
 			email = email + random.nextInt(100);
 		}
-		email = email + "@" + getItem(contentDataValues.getEmailHosts()) + "."
-				+ getItem(contentDataValues.getTlds());
+		email = email + "@" + getItem(contentDataValues.getEmailHosts()) + "." + getItem(contentDataValues.getTlds());
 		return email.toLowerCase();
 	}
 

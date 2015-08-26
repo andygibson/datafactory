@@ -11,7 +11,7 @@ public class DataFactoryTextTest {
 
 	@Before
 	public void initTest() {
-		dataFactory = new DataFactory();
+		dataFactory = DataFactory.create();
 		dataFactory.randomize(73438);		
 	}
 
