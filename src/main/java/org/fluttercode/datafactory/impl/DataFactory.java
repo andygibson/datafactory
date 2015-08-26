@@ -448,7 +448,7 @@ public final class DataFactory {
 				sb.append(" ");
 				length--;
 			}
-			String word = getRandomWord(length);
+			String word = getRandomWord(0, length);
 			sb.append(word);
 			length = length - word.length();
 		}
