@@ -23,6 +23,7 @@ package org.fluttercode.datafactory.impl;
  *
  */
 
+import java.math.BigInteger;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -317,7 +318,39 @@ public final class DataFactory {
 					max));
 		}
 
-		return min + random.nextInt(max - min);
+		int average = avg(min, max);
+		int base = abs(min - average);
+
+		int randomNumber;
+		if (base != 0) {
+			randomNumber = random.nextInt(base);
+		} else {
+			randomNumber = 0;
+		}
+
+		if (random.nextBoolean()) {
+			return average + randomNumber;
+		} else {
+			return average - randomNumber;
+		}
+	}
+
+	private int abs(int number) {
+		if (number == Integer.MIN_VALUE) {
+			// -1 * MIN_VALUE will overflow
+			return Integer.MAX_VALUE;
+		} else {
+			return Math.abs(number);
+		}
+	}
+
+	private int avg(int first, int second) {
+		BigInteger firstInt = BigInteger.valueOf(first);
+		BigInteger secondInt = BigInteger.valueOf(second);
+		
+		return firstInt.add(secondInt).
+				divide(BigInteger.valueOf(2)).
+				intValue();
 	}
 
 	/**
