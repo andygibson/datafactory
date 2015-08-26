@@ -286,7 +286,7 @@ public final class DataFactory {
 	 * @return random number
 	 */
 	public int getNumber() {
-		return getNumberBetween(Integer.MIN_VALUE, Integer.MAX_VALUE);
+		return random.nextInt();
 	}
 
 	/**
@@ -316,8 +316,11 @@ public final class DataFactory {
 					"Minimum must be less than minimum (min=%d, max=%d)", min,
 					max));
 		}
-
-		return min + random.nextInt(max - min);
+		if (max == min) {			
+			return min;
+		}
+		
+		return min + random.nextInt(max-min);
 	}
 
 	/**
