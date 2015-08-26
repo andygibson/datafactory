@@ -485,7 +485,7 @@ public final class DataFactory {
 	/**
 	 * Returns a word of a length between 1 and 10 characters.
 	 * 
-	 * @return A work of max length 10
+	 * @return A word of max length 10
 	 */
 	public String getRandomWord() {
 		return getItem(contentDataValues.getWords());
