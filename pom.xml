@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.fluttercode.datafactory</groupId>
 	<artifactId>datafactory</artifactId>
-	<version>0.9-SNAPSHOT</version>
+	<version>0.9</version>
 
 	<name>DataFactory</name>
 	<description>Library to generate data for testing</description>
@@ -54,8 +54,7 @@
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-release-plugin</artifactId>
-				<version>2.0</version>
+				<artifactId>maven-release-plugin</artifactId>				
 				<configuration>
 					<mavenExecutorId>forked-path</mavenExecutorId>
 					<gpg.useagent>true</gpg.useagent>
