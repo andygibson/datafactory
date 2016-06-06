@@ -45,11 +45,11 @@ public class DefaultContentDataValues implements ContentDataValues {
 			"magnetic", "pull", "shepherd", "always", "wrong", "much",
 			"suspense", "what", "to", "do", "when", "it", "ends", "I", "will",
 			"have", "to", "find", "something", "else", "to", "pique", "my",
-			"interest", "or maybe", "write", "lots", "of", "code", "probably",
+			"interest", "or", "maybe", "write", "lots", "of", "code", "probably",
 			"should", "have", "generated", "this", "text", "automatically",
 			"so", "will", "from", "the", "web", "ending", "badly", "library",
 			"handled", "books", "constantly", "headphones", "of", "ill", "on",
-			"it's", "sill","sits","sofa" };
+			"its", "sill","sits","sofa" };
 
 	private static String[] businessTypes = { "Furnishings", "Bakery",
 			"Accounting", "Textiles", "Manufacturing", "Industries",
