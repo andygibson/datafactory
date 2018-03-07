@@ -1,4 +1,4 @@
-#Generate Test Data with DataFactory
+# Generate Test Data with DataFactory
 
 Feb 8th, 2011 in Articles by Andy Gibson
 
@@ -14,8 +14,8 @@ To add DataFactory to your maven project, just add it as a dependency in your po
         <type>jar</type>
     </dependency>
 
-##Generating Test Data
-Now you can create instances of the DataFactory class and create data :
+## Generating Test Data
+Now you can create instances of the DataFactory class and create data:
 
     public class Main {
  
@@ -28,7 +28,7 @@ Now you can create instances of the DataFactory class and create data :
         }
     }
 
-The produced output is :
+The produced output is:
 
     Lindsey Craft
     Erica Larsen
@@ -48,7 +48,7 @@ The DataFactory class can generate different types of values, from addresses to 
         System.out.println(business + " located at " + address);
     }
 
-to produce :
+to produce:
 
     Uvalda Signs located at 1383 Beam Way,Lyons,19316
     Alma Accounting located at 1386 Countiss St,Nashville,14967
@@ -58,7 +58,7 @@ to produce :
     Poulan Insurance located at 816 Cohen Blvd,Lake City,74839
     Crescent Services located at 1085 Cloveridge Boulevard,Bemiss,08769
 
-##Dates
+## Dates
 There are a number of features to create dates, the first being creating a random date which is usually in a given sensible date range.
 
     DataFactory df = new DataFactory();
@@ -69,7 +69,7 @@ There are a number of features to create dates, the first being creating a rando
         System.out.println("Date = "+start);
     }
 
-This produces a list of random dates between 1/1/2000 and the current date. Typically, a random date might be constrained by some other date, for example you can’t have an end date that occurs before the start date. In this case, you would plug the start date in as the minimum date value :
+This produces a list of random dates between 1/1/2000 and the current date. Typically, a random date might be constrained by some other date, for example you can’t have an end date that occurs before the start date. In this case, you would plug the start date in as the minimum date value:
 
     DataFactory df = new DataFactory();
     Date minDate = df.getDate(2000, 1, 1);
@@ -81,7 +81,7 @@ This produces a list of random dates between 1/1/2000 and the current date. Typi
         System.out.println("Date range = " + dateToString(start) + " to " + dateToString(end));
     }
 
-The result is a list of dates where the second date is always later than the first :
+The result is a list of dates where the second date is always later than the first:
 
     Date range = 04/29/2005 to 07/16/2006
     Date range = 08/07/2009 to 01/19/2010
@@ -93,14 +93,13 @@ The result is a list of dates where the second date is always later than the fir
 
 In many cases, you might want your end date to be only within a few days of the start date. For example, helpdesk support tickets or hotel stays don’t last for years. To do this, you can specify the number of days from the base date you want to generate a result. In this case, we make the end date within 10 days of the begin date :
 
+    for (int i = 0; i < 10; i++) {
+        Date start = df.getDateBetween(minDate, maxDate);
+        Date end = df.getDate(start, 0, 10); //set end to within 10 days of the start
+        System.out.println("Date range = " + dateToString(start) + " to " + dateToString(end));
+    }
 
-for (int i = 0; i < 10; i++) {
-    Date start = df.getDateBetween(minDate, maxDate);
-    Date end = df.getDate(start, 0, 10); //set end to within 10 days of the start
-    System.out.println("Date range = " + dateToString(start) + " to " + dateToString(end));
-}
-
-And the result :
+And the result:
 
     Date range = 04/29/2005 to 04/30/2005
     Date range = 12/29/2003 to 12/30/2003
@@ -108,7 +107,6 @@ And the result :
     Date range = 10/19/2009 to 10/19/2009
 
 You can also specify a negative minimum days value that could return a date prior to the base date or a positive minimum date value to get a later date. Here’s a more complex example that uses different date rules to come up with some complex test data.
-
 
     for (int i = 0; i < 10; i++) {
         //generate an order date
@@ -134,7 +132,7 @@ You can also specify a negative minimum days value that could return a date prio
     }
 
 Here we calculate an order date, and create a delivery date that is at least 4 days out but no more than 10, and then we created an actual delivery date that is between 2 days prior and 3 days after the expected delivery date.
-Notice how we cherry picked the dates, the estimated delivery date is at least 4 days out from the order date, and the actual delivery date will only be at most 2 days prior to the estimated date. This means the actual delivery date is always at least 2 days out from the order date and we won’t get a delivery date value that is before the item was ordered. This code produces the following values :
+Notice how we cherry picked the dates, the estimated delivery date is at least 4 days out from the order date, and the actual delivery date will only be at most 2 days prior to the estimated date. This means the actual delivery date is always at least 2 days out from the order date and we won’t get a delivery date value that is before the item was ordered. This code produces the following values:
 
 
     Ordered on 04/29/2005 deliver by = 05/06/2005 delivered on 05/06/2005
@@ -145,7 +143,7 @@ Notice how we cherry picked the dates, the estimated delivery date is at least 4
     Ordered on 07/10/2003 deliver by = 07/19/2003 delivered on 07/18/2003 - EARLY
     Ordered on 01/04/2003 deliver by = 01/08/2003 delivered on 01/08/2003
 
-##Custom Random Values
+## Custom Random Values
 
 If there is a set of values that is very specific to your application that you might want to generate data from, you can use methods on the DataFactory class to return values with the option for it to be randomly be a default value.
 
@@ -159,16 +157,16 @@ If there is a set of values that is very specific to your application that you m
         }   
     }
 
-This example uses the array of animals and returns a value with a 20% chance of being the default value of “None” to produce the following :
+This example uses the array of animals and returns a value with a 20% chance of being the default value of “None” to produce the following:
 
     Sheep
     None
     Dog
     Horse
 
-##Textual Data
+## Textual Data
 
-Random text data comes in two forms, absolutely random data and text data made up of words. You can generate either using the following methods :
+Random text data comes in two forms, absolutely random data and text data made up of words. You can generate either using the following methods:
 
     DataFactory df = new DataFactory();
     System.out.println(df.getRandomText(20, 25));
@@ -183,9 +181,8 @@ which produces
 
 All three of these methods can be passed a single length which returns a fixed length string, or a min/max length which produces a random string with a length somewhere between the min/max. For the single word method, if there are no words in the dictionary of suitable length, then a word is generated using random characters.
 
-Changing the test data values produced
+## Changing the test data values produced
 The data used to generate the values come from classes that can be replaced with other versions. For example, the name values can be changed by providing the DataFactory instance with an object that implements the NameDataValues interface. Here is a simple class that does that to return Scandinavian first names and delegates to the the default implementation to return all the other values.
-
 
     public class ScandinavianNames  implements NameDataValues {
  
@@ -217,7 +214,6 @@ The data used to generate the values come from classes that can be replaced with
 
 Obviously, to use all your own names you would add and return values for last name and the suffix/prefix values. To use this new implementation, just create an instance of the data provider and pass it to the instance of the data factory.
 
-
     public static void main(String[] args) {
         DataFactory df = new DataFactory();
         df.setNameDataValues(new ScandinavianNames());
@@ -237,11 +233,14 @@ Our results are:
 
 You can always start working with the default implementation and use a more locale specific implementation if you need it later.
 
-The different pieces that can be replaced are as follows :
+The different pieces that can be replaced are as follows:
 
-NameDataValues – Generates names and suffix/prefixes
-ContentDataValues.java – Generates words, business types, email domain names and top level domain values
-AddressDataValues – Generates city names, street names and address suffixes
+`NameDataValues` – Generates names and suffix/prefixes
+
+`ContentDataValues.java` – Generates words, business types, email domain names and top level domain values
+
+`AddressDataValues` – Generates city names, street names and address suffixes
+
 Note that if you intend on replacing the component that generates words, you should have a good collection of words of various lengths from 2 up to say 8 or more characters.
 
 Hopefully this will give you a head start in generating data in development and test environments for new projects. Now I have DataFactory in the Central Maven Repository I plan on using this in the Knappsack archetypes rather than hard coding the data which was in fact generated from an earlier DataFactory implementation.
