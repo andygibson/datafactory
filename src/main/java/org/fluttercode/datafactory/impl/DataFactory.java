@@ -45,7 +45,7 @@ import org.fluttercode.datafactory.NameDataValues;
 public final class DataFactory {
 
   // used for backwards compatibility
-  private static Random original_random = new Random(93285);
+  private static Random originalRandom = new Random(93285);
 
   private NameDataValues nameDataValues = new DefaultNameDataValues();
   private AddressDataValues addressDataValues = new DefaultAddressDataValues();
@@ -76,7 +76,7 @@ public final class DataFactory {
    */
   @Deprecated
   public DataFactory() {
-    this(original_random);
+    this(originalRandom);
   }
 
   private DataFactory(final Random random) {
@@ -97,7 +97,7 @@ public final class DataFactory {
    * @return DataFactory instance with a shared random
    */
   public static DataFactory createWithOriginalRandom() {
-    return new DataFactory(original_random);
+    return new DataFactory(originalRandom);
   }
 
   /**
