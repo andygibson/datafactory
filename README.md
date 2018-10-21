@@ -1,4 +1,4 @@
-#Generate Test Data with DataFactory
+# Generate Test Data with DataFactory
 
 Feb 8th, 2011 in Articles by Andy Gibson
 
@@ -14,8 +14,8 @@ To add DataFactory to your maven project, just add it as a dependency in your po
         <type>jar</type>
     </dependency>
 
-##Generating Test Data
-Now you can create instances of the DataFactory class and create data :
+## Generating Test Data
+Now you can create instances of the DataFactory class and create data:
 
     public class Main {
  
@@ -58,7 +58,7 @@ to produce :
     Poulan Insurance located at 816 Cohen Blvd,Lake City,74839
     Crescent Services located at 1085 Cloveridge Boulevard,Bemiss,08769
 
-##Dates
+## Dates
 There are a number of features to create dates, the first being creating a random date which is usually in a given sensible date range.
 
     DataFactory df = new DataFactory();
@@ -91,15 +91,15 @@ The result is a list of dates where the second date is always later than the fir
     Date range = 07/10/2003 to 04/02/2008
     Date range = 01/04/2003 to 01/12/2005
 
-In many cases, you might want your end date to be only within a few days of the start date. For example, helpdesk support tickets or hotel stays don’t last for years. To do this, you can specify the number of days from the base date you want to generate a result. In this case, we make the end date within 10 days of the begin date :
+In many cases, you might want your end date to be only within a few days of the start date. For example, help desk support tickets or hotel stays don’t last for years. To do this, you can specify the number of days from the base date you want to generate a result. In this case, we make the end date within 10 days of the begin date :
 
-
+```
 for (int i = 0; i < 10; i++) {
     Date start = df.getDateBetween(minDate, maxDate);
     Date end = df.getDate(start, 0, 10); //set end to within 10 days of the start
     System.out.println("Date range = " + dateToString(start) + " to " + dateToString(end));
 }
-
+```
 And the result :
 
     Date range = 04/29/2005 to 04/30/2005
@@ -145,7 +145,7 @@ Notice how we cherry picked the dates, the estimated delivery date is at least 4
     Ordered on 07/10/2003 deliver by = 07/19/2003 delivered on 07/18/2003 - EARLY
     Ordered on 01/04/2003 deliver by = 01/08/2003 delivered on 01/08/2003
 
-##Custom Random Values
+## Custom Random Values
 
 If there is a set of values that is very specific to your application that you might want to generate data from, you can use methods on the DataFactory class to return values with the option for it to be randomly be a default value.
 
@@ -166,7 +166,7 @@ This example uses the array of animals and returns a value with a 20% chance of 
     Dog
     Horse
 
-##Textual Data
+## Textual Data
 
 Random text data comes in two forms, absolutely random data and text data made up of words. You can generate either using the following methods :
 
